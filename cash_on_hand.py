@@ -44,3 +44,5 @@ with fp.open(mode ="r", encoding = "UTF-8", newline = "") as file:
      print(f"[HIGHEST CASH SURPLUS] DAY:{day_with_highest_increment}, AMOUNT: USD{cash_on_hand_on_day_with_highest_increment}")
 
     
+
+
