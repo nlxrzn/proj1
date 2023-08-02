@@ -34,9 +34,11 @@ with fp.open(mode ="r", encoding = "UTF-8", newline = "") as file:
         if current_value - previous_value > highest_increment:
          highest_increment = current_value - previous_value
          day_with_highest_increment = cashRecords[i][0]
+         cash_on_hand_on_day_with_highest_increment = current_value
         # return day_with_highest_increment, highest_increment
 
     if day_with_highest_increment is None:
         print("There are no increments in Cash-on-Hand")
     else:
-     print("The day with the highest increment is", day_with_highest_increment, "with an increment of", highest_increment)
+     print("[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY")
+     print(f"[HIGHEST CASH SURPLUS] DAY:{day_with_highest_increment}, AMOUNT: USD{cash_on_hand_on_day_with_highest_increment}")
