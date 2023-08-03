@@ -42,6 +42,32 @@ with fp.open(mode ="r", encoding = "UTF-8", newline = "") as file:
     else:
      print("[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY")
      print(f"[HIGHEST CASH SURPLUS] DAY:{day_with_highest_increment}, AMOUNT: USD{cash_on_hand_on_day_with_highest_increment}")
-#hi nab 
-#nablovemark
-#hi daris
+
+
+    def find_days_with_decrease_in_cash_on_hand(cashRecords):
+      """Finds the days thwith decreases in Cash-on-Hand.
+
+      Args:
+      data: A list of lists, where each inner list contains the day and amount of Cash-on-Hand for a given day.
+
+      Returns:
+      A list of days with decreases in Cash-on-Hand, or an empty list if there are no decreases.
+      """
+      days_with_decrease = []
+      for i in range(1, len(cashRecords)):
+       current = int(cashRecords[i][1])
+       previous = int(cashRecords[i - 1][1])
+
+      if current < previous:
+       days_with_decrease.append(cashRecords[i][0])
+
+      return days_with_decrease
+      
+    days_with_decrease = find_days_with_decrease_in_cash_on_hand(cashRecords)
+
+    if days_with_decrease:
+      print("The days with decreases in Cash-on-Hand are", days_with_decrease)
+    else:
+      print("There are no decreases in Cash-on-Hand")
+
+print(days_with_decrease)
