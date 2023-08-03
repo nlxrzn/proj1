@@ -19,12 +19,12 @@ with fp.open(mode ="r", encoding = "UTF-8", newline = "") as file:
     def find_day_with_highest_increment(cashRecords):
      """Finds the day and amount of the highest increment in Cash-on-Hand.
 
-    Args:
-    data: A list of lists, where each inner list contains the day and amount of Cash-on-Hand for a given day.
+      Args:
+      data: A list of lists, where each inner list contains the day and amount of Cash-on-Hand for a given day.
 
-  Returns:
-    A tuple of the day and amount of the highest increment, or None if there are no increments.
-  """
+      Returns:
+      A tuple of the day and amount of the highest increment, or None if there are no increments.
+      """
     highest_increment = 0
     day_with_highest_increment = None
     for i in range(1, len(cashRecords)):
@@ -55,19 +55,23 @@ with fp.open(mode ="r", encoding = "UTF-8", newline = "") as file:
       """
       days_with_decrease = []
       for i in range(1, len(cashRecords)):
-       current = int(cashRecords[i][1])
-       previous = int(cashRecords[i - 1][1])
+        current = int(cashRecords[i][1])
+        previous = int(cashRecords[i - 1][1])
 
       if current < previous:
-       days_with_decrease.append(cashRecords[i][0])
-
+        days_with_decrease.append((cashRecords[i][0], current - previous))
+    
       return days_with_decrease
       
     days_with_decrease = find_days_with_decrease_in_cash_on_hand(cashRecords)
 
+
+
     if days_with_decrease:
-      print("The days with decreases in Cash-on-Hand are", days_with_decrease)
+      print("The days with decreases in Cash-on-Hand are:")
+    for day, amount in days_with_decrease:
+      print(f"Day {day}: {amount}")
     else:
       print("There are no decreases in Cash-on-Hand")
 
-print(days_with_decrease)
+# print(days_with_decrease)
