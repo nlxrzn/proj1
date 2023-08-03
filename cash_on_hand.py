@@ -10,13 +10,13 @@ with fp.open(mode ="r", encoding = "UTF-8", newline = "") as file:
      next(reader) #skip header
 
      #create an empty lists to store day and amount record
-     cashRecords=[]
+     coh=[]
 
      #append cash on hand into cashrecords lis
      for row in reader:
-        cashRecords.append([int(row[0]), int(row[1])])
+        coh.append([int(row[0]), int(row[1])])
 
-def compute_difference(cashRecords):
+def differences(coh):
     """Computes the difference in Cash-on-Hand if the current day is lower than the previous day.
 
     Args:
@@ -26,19 +26,18 @@ def compute_difference(cashRecords):
     A list of tuples, where each tuple contains the Day, Cash-on-Hand, and difference in Cash-on-Hand for a single day.
     """
     difference_in_cash_on_hand = []
-    for day in range(len(cashRecords)):
+    for day in range(len(coh)):
         if day == 0:
             continue
-        previous_cash_on_hand = cashRecords[day - 1][1]
-        cash_on_hand = cashRecords[day][1]
+        previous_cash_on_hand = coh[day - 1][1]
+        cash_on_hand = coh[day][1]
         if cash_on_hand < previous_cash_on_hand:
-            difference = cash_on_hand - previous_cash_on_hand
-            difference_in_cash_on_hand.append((cashRecords[day][0], cash_on_hand, difference))
+            difference_in_cash_on_hand.append((coh[day][0], cash_on_hand))
     return difference_in_cash_on_hand
 
-difference_in_cash_on_hand = compute_difference(cashRecords)
-for day, cash_on_hand, difference in difference_in_cash_on_hand:
-   print(f"Day: {day}, Amount: {cash_on_hand}, Difference: {difference}")
+difference_in_cash_on_hand = differences(coh)
+for day, cash_on_hand in difference_in_cash_on_hand:
+  print(f"Day: {day}, Amount: {cash_on_hand}")
 
 
 
