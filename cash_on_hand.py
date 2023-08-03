@@ -1,3 +1,4 @@
+
 from pathlib import Path
 import csv
 
@@ -23,7 +24,7 @@ def differences(coh):
     data: A list of lists, where each inner list contains the Day and Cash-on-Hand values for a single day.
 
     Returns:
-    A list of tuples, where each tuple contains the Day, Cash-on-Hand, and difference in Cash-on-Hand for a single day.
+    A list of tuples, where each tuple contains the Day and Cash-on-Hand in Cash-on-Hand for a single day.
     """
     difference_in_cash_on_hand = []
     for day in range(len(coh)):
